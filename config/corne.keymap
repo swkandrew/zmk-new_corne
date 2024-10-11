@@ -151,11 +151,11 @@
 
         layer_4 {
             bindings = <
-&kp C_EJECT  &Tap_Hold LEFT_BRACKET LEFT_PARENTHESIS  &Tap_Hold RIGHT_BRACKET RIGHT_PARENTHESIS  &Tap_Hold LESS_THAN GREATER_THAN  &arrow     &kp BSPC     &kp  &kp  &kp  &kp  &kp  &kp  &kp
-&kp LSHFT    &kp N1                                   &kp N2                                     &kp N5                            &kp N6     &kp EQUAL    &kp  &kp  &kp  &kp  &kp  &kp  &kp
-&kp LCTRL    &kp LC(Z)                                &kp LC(X)                                  &kp LC(C)                         &kp LC(V)  &kp MINUS    &kp  &kp  &kp  &kp  &kp  &kp  &kp
-                                                      &to 0                                      &kp LALT                          &kp RET    &kp SPACE    &kp  &kp  &kp  &kp
-                                                                                                                                                           &kp
+&kp C_EJECT  &Tap_Hold LEFT_BRACKET LEFT_PARENTHESIS  &Tap_Hold RIGHT_BRACKET RIGHT_PARENTHESIS  &Tap_Hold LESS_THAN GREATER_THAN  &arrow     &kp BSPC     &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&kp LSHFT    &kp N1                                   &kp N2                                     &kp N5                            &kp N6     &kp EQUAL    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&kp LCTRL    &kp LC(Z)                                &kp LC(X)                                  &kp LC(C)                         &kp LC(V)  &kp MINUS    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                                                      &to 0                                      &kp LALT                          &kp RET    &kp SPACE    &trans  &trans  &trans  &trans
+                                                                                                                                                           &trans
             >;
 
             sensor-bindings = <&inc_dec_kp LEFT_ARROW RIGHT_ARROW>;
