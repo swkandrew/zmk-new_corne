@@ -159,6 +159,7 @@
             >;
 
             sensor-bindings = <&inc_dec_kp LEFT_ARROW RIGHT_ARROW>;
+            label = "layer_4";
         };
     };
 };
