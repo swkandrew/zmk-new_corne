@@ -154,8 +154,8 @@
             bindings = <
 &Tap_Hold TAB C_EJECT  &Tap_Hold LEFT_BRACKET LEFT_PARENTHESIS  &Tap_Hold RIGHT_BRACKET RIGHT_PARENTHESIS  &Tap_Hold LESS_THAN GREATER_THAN  &arrow       &kp BSPC     &kp UP     &kp ASTERISK  &kp N7  &kp N8  &kp N9  &kp PLUS    &kp BSPC
 &kp LSHFT              &kp N1                                   &kp N2                                     &kp N5                            &kp N6       &kp EQUAL    &kp DOWN   &kp SLASH     &kp N4  &kp N5  &kp N6  &kp MINUS   &trans
-&kp LCTRL              &kp LC(Z)                                &kp LC(X)                                  &kp LC(C)                         &kp LC(V)    &kp MINUS    &kp LEFT   &trans        &kp N1  &kp N2  &kp N3  &kp PERIOD  &kp ENTER
-                                                                &to 0                                      &kp LALT                          &lt 5 ENTER  &kp SPACE    &kp RIGHT  &kp SPACE     &trans  &kp N0
+&kp LCTRL              &kp LC(Z)                                &kp RC(X)                                  &kp LC(C)                         &kp LC(V)    &kp MINUS    &kp LEFT   &trans        &kp N1  &kp N2  &kp N3  &kp PERIOD  &kp ENTER
+                                                                &to 5                                      &kp LALT                          &lt 6 ENTER  &kp SPACE    &kp RIGHT  &kp SPACE     &trans  &kp N0
                                                                                                                                                                        &trans
             >;
 
@@ -163,7 +163,20 @@
             label = "layer_4";
         };
 
-        layer_5 {
+        layer_6 {
+            label = "Mac_iOS";
+            bindings = <
+&Tap_Hold TAB C_EJECT  &Tap_Hold LEFT_BRACKET LEFT_PARENTHESIS  &Tap_Hold RIGHT_BRACKET RIGHT_PARENTHESIS  &Tap_Hold LESS_THAN GREATER_THAN  &arrow       &kp BSPC     &kp UP     &kp ASTERISK  &kp N7  &kp N8  &kp N9  &kp PLUS    &kp BSPC
+&kp LSHFT              &kp N1                                   &kp N2                                     &kp N5                            &kp N6       &kp EQUAL    &kp DOWN   &kp SLASH     &kp N4  &kp N5  &kp N6  &kp MINUS   &trans
+&kp LCTRL              &kp LG(Z)                                &kp LG(X)                                  &kp LG(C)                         &kp LG(V)    &kp MINUS    &kp LEFT   &trans        &kp N1  &kp N2  &kp N3  &kp PERIOD  &kp ENTER
+                                                                &to 0                                      &kp LALT                          &lt 6 ENTER  &kp SPACE    &kp RIGHT  &kp SPACE     &trans  &kp N0
+                                                                                                                                                                       &trans
+            >;
+
+            sensor-bindings = <&inc_dec_kp RIGHT LEFT>;
+        };
+
+        Arrow {
             bindings = <
 &trans  &kt HOME  &kp UP_ARROW  &kp END    &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &kp LEFT  &kp DOWN      &kp RIGHT  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
