@@ -4,7 +4,6 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/pointing.h>
-#include <dt-bindings/zmk/pointing.h>
 #include <dt-bindings/zmk/rgb.h>
 
 #define ZMK_MOUSE_DEFAULT_MOVE_VAL 1200  // 600
@@ -69,6 +68,20 @@
         };
     };
 
+    combos {
+        compatible = "zmk,combos";
+
+        leftboot {
+            bindings = <&bootloader>;
+            key-positions = <0 42 43 44>;
+        };
+
+        rightboot {
+            bindings = <&bootloader>;
+            key-positions = <45 46 47 12>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -123,10 +136,10 @@
             //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
-&kp GRAVE  &kp EXCL  &kp AT  &kp HASH  &kp DLLR  &kp PRCNT                    &trans          &kp CARET     &kp AMPS   &kp ASTRK  &kp LPAR          &kp RPAR           &kp BSPC
-&trans     &none     &trans  &trans    &trans    &trans               &trans  &trans  &trans  &kp PLUS      &kp MINUS  &kp BSLH   &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp UNDERSCORE
-&trans     &none     &none   &trans    &trans    &trans     &tog 0            &trans          &kp ASTERISK  &kp SLASH  &kp TILDE  &kp LEFT_BRACE    &kp RIGHT_BRACE    &kp EQUAL
-                             &tog 0    &tog 3    &trans                                       &trans        &trans     &mkp LCLK
+&kp GRAVE    &kp EXCL  &kp AT  &kp HASH  &kp DLLR  &kp PRCNT                    &trans          &kp CARET     &kp AMPS   &kp ASTRK  &kp LPAR          &kp RPAR           &kp BSPC
+&trans       &none     &trans  &trans    &trans    &trans               &trans  &trans  &trans  &kp PLUS      &kp MINUS  &kp BSLH   &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp UNDERSCORE
+&bootloader  &none     &none   &trans    &trans    &trans     &tog 0            &trans          &kp ASTERISK  &kp SLASH  &kp TILDE  &kp LEFT_BRACE    &kp RIGHT_BRACE    &kp EQUAL
+                               &tog 0    &tog 3    &trans                                       &trans        &trans     &trans
             >;
 
             label = "SYMBOL";
@@ -134,13 +147,13 @@
         };
 
         FN {
-            label = "SYMBOL";
-            display-name = "FN";
+            label = "FN";
+            display-name = "s";
             bindings = <
-&kp GRAVE  &kp F1  &kp F2  &kp F3  &kp F4  &kp F5                    &trans          &kp F6        &kp F7     &kp F8     &kp F9            &kp F10            &kp F11
-&trans     &none   &trans  &trans  &trans  &trans            &trans  &trans  &trans  &kp PLUS      &kp MINUS  &kp BSLH   &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp F12
-&trans     &none   &none   &trans  &trans  &trans  &tog 4            &trans          &kp ASTERISK  &kp SLASH  &kp TILDE  &kp LEFT_BRACE    &kp RIGHT_BRACE    &kp EQUAL
-                           &tog 0  &tog 0  &trans                                    &trans        &trans     &trans
+&kp GRAVE    &kp F1  &kp F2  &kp F3  &kp F4  &kp F5                    &trans          &kp F6        &kp F7     &kp F8     &kp F9            &kp F10            &kp F11
+&trans       &none   &trans  &trans  &trans  &trans            &trans  &trans  &trans  &kp PLUS      &kp MINUS  &kp BSLH   &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp F12
+&bootloader  &none   &none   &trans  &trans  &trans  &tog 4            &trans          &kp ASTERISK  &kp SLASH  &kp TILDE  &kp LEFT_BRACE    &kp RIGHT_BRACE    &kp EQUAL
+                             &tog 0  &tog 0  &trans                                    &trans        &trans     &trans
             >;
 
             sensor-bindings = <&scroll_encoder>;
