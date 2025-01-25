@@ -7,33 +7,48 @@
 
 #include <input/processors.dtsi>
 
-/*
-
-   &mmv_input_listener {
-       input-processors = <&zip_xy_scaler 2 1>;
-   };
-
-   &msc_input_listener {
-       input-processors = <&zip_xy_scaler 2 1>;
-   };
-
- */
 
 #define ZMK_MOUSE_DEFAULT_MOVE_VAL 1200  // 600
 #define ZMK_MOUSE_DEFAULT_SCRL_VAL 20    // 10
+#define U_MS_U &mmv MOVE_UP
+#define U_MS_D &mmv MOVE_DOWN
+#define U_MS_L &mmv MOVE_LEFT
+#define U_MS_R &mmv MOVE_RIGHT
 
 / {
     behaviors {
         td0: td0 {
             compatible = "zmk,behavior-tap-dance";
-            display-name = "Shift/Caps Lock Tap Dance";
+            label = "TD0";
             #binding-cells = <0>;
             bindings = <&kp LEFT_SHIFT>, <&kp CAPS>;
+        };
+
+        Tap_Hold: th {
+            compatible = "zmk,behavior-hold-tap";
+            label = "TAP_HOLD";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <300>;
+        };
+
+        mmv {
+            acceleration-exponent = <1>;      // 1
+            time-to-max-speed-ms = <900>;    // 40
+            delay-ms = <0>;                   // 0
+        };
+
+        msc {
+            acceleration-exponent = <1>;      // 0
+            time-to-max-speed-ms = <400>;      // 500
+            delay-ms = <0>;                   // 10
         };
     };
 
     rgb_encoder: rgb_encoder {
         compatible = "zmk,behavior-sensor-rotate";
+        label = "RGB_ENCODER";
         #sensor-binding-cells = <0>;
         bindings = <&rgb_ug RGB_BRI>, <&rgb_ug RGB_BRD>;
     };
@@ -42,7 +57,17 @@
         compatible = "zmk,behavior-sensor-rotate";
         #sensor-binding-cells = <0>;
         bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
+
         tap-ms = <30>;
+    };
+
+    macros {
+        arrow: arrow {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp SPACE &kp MINUS &kp GT &kp SPACE>;
+            label = "ARROW";
+        };
     };
 
     keymap {
@@ -50,46 +75,119 @@
 
         default_layer {
             display-name = "QWERTY";
+
+            // --------------------------------------------------------------------------------
+            // |  TAB |  Q  |  W  |  E  |  R  |  T  |                ↑    |  Y  |  U   |  I  |  O  |  P  | BKSP |      &kp UP_ARROW 
+            // | SHIFT |  A  |  S  |  D  |  F  |  G  |               ↓    |  H  |  J   |  K  |  L  |  ;  |  '   | 
+            // | CTRL |  Z  |  X  |  C  |  V  |  B  |                ←    |  N  |  M   |  ,  |  .  |  /  | ESC  |
+            //                    | GUI | LWR | SPC |                →    | ENT | RSE  | ALT |
+            //                                                      enter
+
             bindings = <
-&kp TAB    &kp Q  &kp W      &kp E     &kp R  &kp T                              &kp UP                &kp Y        &kp U  &kp I      &kp O    &kp P     &kp BSPC
-&td0       &kp A  &kp S      &kp D     &kp F  &kp G                    &kp LEFT  &kp ENTER  &kp RIGHT  &kp H        &kp J  &kp K      &kp L    &kp SEMI  &kp SQT
-&kp LCTRL  &kp Z  &kp X      &kp C     &kp V  &kp B       &kp SPACE              &kp DOWN              &kp N        &kp M  &kp COMMA  &kp DOT  &kp FSLH  &kp ESC
-                             &kp LGUI  &mo 1  &lt 3 SPACE                                              &lt 3 ENTER  &mo 2  &kp RALT
+&Tap_Hold ESCAPE TAB  &kp Q  &kp W  &kp E         &kp R  &kp T        &kp UP_ARROW     &kp Y      &kp U  &kp I      &kp O    &kp P     &kp BSPC
+&td0                  &kp A  &kp S  &kp D         &kp F  &kp G        &kp DOWN_ARROW   &kp H      &kp J  &kp K      &kp L    &kp SEMI  &kp ENTER
+&kp LCTRL             &kp Z  &kp X  &kp C         &kp V  &kp B        &kp LEFT_ARROW   &kp N      &kp M  &kp COMMA  &kp DOT  &kp FSLH  &kp SINGLE_QUOTE
+                             &to 3  &kp LEFT_ALT  &mo 1  &kp SPACE    &kp RIGHT_ARROW  &kp SPACE  &to 2  &kp RALT
+                                                                      &kp ENTER
             >;
+
+            label = "QWERTY";
             sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
         };
 
         lower_layer {
             display-name = "NUMBER";
+
+            // -----------------------------------------------------------------------------------------
+            // |  TAB |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BKSP |
+            // | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |   | LFT | DWN |  UP | RGT |     |      |
+            // | SHFT |     |     |     |     |     |   |     |     |     |     |     |      |
+            //                    | GUI |     | SPC |   | ENT |     | ALT |
+
             bindings = <
-&trans  &kp N1           &kp N2          &kp N3        &kp N4        &kp N5                                        &mmv MOVE_UP                     &kp N6           &kp N7           &kp N8           &kp N9           &kp N0    &kp BSPC
-&trans  &bt BT_CLR_ALL   &bt BT_SEL 0    &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3                           &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT  &kp LEFT         &kp DOWN         &kp UP           &kp RIGHT        &kp HOME  &kp PG_UP
-&trans  &rgb_ug RGB_OFF  &rgb_ug RGB_ON  &trans        &trans        &rgb_ug RGB_EFF &kp C_MUTE                    &mmv MOVE_DOWN                   &rgb_ug RGB_EFR  &rgb_ug RGB_SPI  &rgb_ug RGB_BRI  &rgb_ug RGB_BRD  &kp END   &kp PG_DN
-                                         &trans        &trans        &trans                                                                         &kp INS          &kp DEL          &trans
+&trans  &kp N1           &kp N2          &kp N3        &kp N4        &kp N5             &mmv MOVE_UP     &kp N6    &kp N7        &kp N8        &kp N9        &kp N0       &kp BSPC
+&trans  &bt BT_CLR_ALL   &bt BT_SEL 0    &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3       &mmv MOVE_DOWN   &kp LEFT  &kp NUMBER_4  &kp N5        &kp NUMBER_6  &kp KP_PLUS  &trans
+&trans  &rgb_ug RGB_OFF  &rgb_ug RGB_ON  &trans        &trans        &rgb_ug RGB_EFF    &mmv MOVE_LEFT   &kp N0    &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp MINUS    &kp ENTER
+                         &kp C_MUTE      &trans        &trans        &trans             &mmv MOVE_RIGHT  &kp INS   &kp DEL       &trans
+                                                                                        &mkp LCLK
             >;
+
+            label = "NUMBER";
             sensor-bindings = <&scroll_encoder>;
         };
 
         raise_layer {
             display-name = "SYMBOL";
+
+            // -----------------------------------------------------------------------------------------
+            // |  TAB |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | BKSP |
+            // | CTRL |     |     |     |     |     |   |  -  |  =  |  [  |  ]  |  \  |  `   |
+            // | SHFT |     |     |     |     |     |   |  _  |  +  |  {  |  }  | "|" |  ~   |
+            //                    | GUI |     | SPC |   | ENT |     | ALT |
+
             bindings = <
-&trans  &kp EXCL      &kp AT        &kp HASH   &kp DLLR   &kp PRCNT                           &mmv MOVE_UP                     &kp CARET  &kp AMPS   &kp ASTRK  &kp LPAR  &kp RPAR  &kp BSPC
-&trans  &bt BT_CLR    &mkp LCLK     &mkp MCLK  &mkp RCLK  &mkp MB4            &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT  &kp MINUS  &kp EQUAL  &kp LBKT   &kp RBKT  &kp BSLH  &kp GRAVE
-&trans  &out OUT_USB  &out OUT_BLE  &none      &none      &mkp MB5  &trans                    &mmv MOVE_DOWN                   &kp UNDER  &kp PLUS   &kp LBRC   &kp RBRC  &kp PIPE  &kp TILDE
-                                    &trans     &trans     &kp SPACE                                                            &kp RET    &trans     &trans
+&kp GRAVE  &kp EXCL      &kp AT        &kp HASH   &kp DLLR   &kp PRCNT    &mmv MOVE_UP     &kp CARET  &kp AMPS   &kp ASTRK  &kp LPAR  &kp RPAR  &kp BSPC
+&trans     &bt BT_CLR    &mkp LCLK     &mkp MCLK  &mkp RCLK  &mkp MB4     &mmv MOVE_DOWN   &kp MINUS  &kp EQUAL  &kp LBKT   &kp RBKT  &kp BSLH  &kp GRAVE
+&trans     &out OUT_USB  &out OUT_BLE  &none      &none      &mkp MB5     &mmv MOVE_LEFT   &kp UNDER  &kp PLUS   &kp LBRC   &kp RBRC  &kp PIPE  &kp TILDE
+                         &trans        &trans     &trans     &kp SPACE    &mmv MOVE_RIGHT  &kp RET    &to 3      &trans
+                                                                          &mkp LCLK
             >;
+
+            label = "SYMBOL";
             sensor-bindings = <&scroll_encoder>;
         };
 
         layer_3 {
             display-name = "Fn";
             bindings = <
-&studio_unlock   &kp F1      &kp F2      &kp F3       &kp F4     &kp F5                                  &mmv MOVE_UP                     &kp F6       &kp F7     &kp F8       &kp F9      &kp F10          &kp F11
-&trans  &trans      &mkp LCLK   &mkp MCLK    &mkp RCLK  &mkp MB4                &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT  &bootloader  &mkp LCLK  &mkp MCLK    &mkp RCLK   &kp PRINTSCREEN  &kp F12
-&trans  &sys_reset  &trans      &bootloader  &trans     &mkp MB5  &kp C_MUTE                    &mmv MOVE_DOWN                   &trans       &trans     &bootloader  &sys_reset  &kp SCROLLLOCK   &kp PAUSE_BREAK
-                                &trans      &trans      &trans                                                                   &trans       &trans     &trans
+&trans  &kp F1      &kp F2     &kp F3       &kp F4     &kp F5      &mmv MOVE_UP     &kp F6       &kp F7     &kp F8       &kp F9      &kp F10          &kp F11
+&trans  &trans      &mkp LCLK  &mkp MCLK    &mkp RCLK  &mkp MB4    &mmv MOVE_DOWN   &bootloader  &mkp LCLK  &mkp MCLK    &mkp RCLK   &kp PRINTSCREEN  &kp F12
+&trans  &sys_reset  &trans     &bootloader  &trans     &mkp MB5    &mmv MOVE_LEFT   &trans       &trans     &bootloader  &sys_reset  &kp SCROLLLOCK   &kp PAUSE_BREAK
+                    &to 4      &trans       &trans     &trans      &mmv MOVE_RIGHT  &trans       &trans     &trans
+                                                                   &mkp LCLK
             >;
+
+            label = "FN";
             sensor-bindings = <&scroll_encoder>;
+        };
+
+        layer_4 {
+            bindings = <
+&Tap_Hold TAB C_EJECT  &Tap_Hold LEFT_BRACKET LEFT_PARENTHESIS  &Tap_Hold RIGHT_BRACKET RIGHT_PARENTHESIS  &Tap_Hold LESS_THAN GREATER_THAN  &arrow       &kp BSPC     &kp UP     &kp ASTERISK  &kp N7  &kp N8  &kp N9  &kp PLUS    &kp BSPC
+&kp LSHFT              &kp N1                                   &kp N2                                     &kp N5                            &kp N6       &kp EQUAL    &kp DOWN   &kp SLASH     &kp N4  &kp N5  &kp N6  &kp MINUS   &trans
+&kp LCTRL              &kp LC(Z)                                &kp RC(X)                                  &kp LC(C)                         &kp LC(V)    &kp MINUS    &kp LEFT   &trans        &kp N1  &kp N2  &kp N3  &kp PERIOD  &kp ENTER
+                                                                &to 5                                      &kp LALT                          &lt 6 ENTER  &kp SPACE    &kp RIGHT  &kp SPACE     &trans  &kp N0
+                                                                                                                                                                       &trans
+            >;
+
+            sensor-bindings = <&inc_dec_kp RIGHT LEFT>;
+            label = "layer_4";
+        };
+
+        Mac_iOS {
+            label = "Mac_iOS";
+            bindings = <
+&Tap_Hold TAB C_EJECT  &Tap_Hold LEFT_BRACKET LEFT_PARENTHESIS  &Tap_Hold RIGHT_BRACKET RIGHT_PARENTHESIS  &Tap_Hold LESS_THAN GREATER_THAN  &arrow       &kp BSPC     &kp UP     &kp ASTERISK  &kp N7  &kp N8  &kp N9  &kp PLUS    &kp BSPC
+&kp LSHFT              &kp N1                                   &kp N2                                     &kp N5                            &kp N6       &kp EQUAL    &kp DOWN   &kp SLASH     &kp N4  &kp N5  &kp N6  &kp MINUS   &trans
+&kp LCTRL              &kp LG(Z)                                &kp LG(X)                                  &kp LG(C)                         &kp LG(V)    &kp MINUS    &kp LEFT   &trans        &kp N1  &kp N2  &kp N3  &kp PERIOD  &kp ENTER
+                                                                &to 0                                      &kp LALT                          &lt 6 ENTER  &kp SPACE    &kp RIGHT  &kp SPACE     &trans  &kp N0
+                                                                                                                                                                       &trans
+            >;
+
+            sensor-bindings = <&inc_dec_kp RIGHT LEFT>;
+        };
+
+        Arrow {
+            bindings = <
+&trans  &kt HOME  &kp UP_ARROW  &kp END    &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &kp LEFT  &kp DOWN      &kp RIGHT  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans    &trans        &trans     &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                  &to 4         &trans     &trans  &trans    &trans  &trans  &trans  &trans
+                                                             &trans
+            >;
+
+            sensor-bindings = <&inc_dec_kp RIGHT LEFT>;
+            label = "Arrow";
         };
     };
 };
