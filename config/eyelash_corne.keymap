@@ -54,13 +54,22 @@
         tap-ms = <30>;
     };
 
+    combos {
+        compatible = "zmk,combos";
+
+        del {
+            bindings = <&kp DEL>;
+            key-positions = <41 12>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
         default_layer {
             display-name = "QWERTY";
             bindings = <
-&ta GRAVE ESCAPE  &kp Q  &kp W  &kp E             &kp R  &kp T                                   &kp UP                &kp Y                &kp U  &kp I      &kp O    &kp P     &kp BSPC
+&ta GRAVE ESCAPE  &kp Q  &kp W  &kp E             &kp R  &kp T                                   &kp UP                &kp Y                &kp U  &kp I      &kp O    &kp P     &kp BACKSPACE
 &ta CAPS TAB      &kp A  &kp S  &kp D             &kp F  &kp G                         &kp LEFT  &kp ENTER  &kp RIGHT  &kp H                &kp J  &kp K      &kp L    &kp SEMI  &ta SQT ENTER
 &kp LSHIFT        &kp Z  &kp X  &kp C             &kp V  &kp B               &tog 4              &kp DOWN              &kp N                &kp M  &kp COMMA  &kp DOT  &kp FSLH  &kp RSHIFT
                                 &kp LEFT_CONTROL  &to 1  &ta LEFT_ALT SPACE                                            &ta RIGHT_ALT SPACE  &mo 1  &kp ENTER
