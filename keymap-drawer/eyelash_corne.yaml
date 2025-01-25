@@ -126,7 +126,7 @@ layers:
   - {t: '[', s: '{'}
   - {t: ']', s: '}'}
   - _
-  - {t: '$$mdi:transfer$$', type: trans}
+  - $$mdi:progress-download$$
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '$$mdi:transfer$$', type: trans}
@@ -141,12 +141,12 @@ layers:
   - '}'
   - {t: '=', s: +}
   - {t: QWERTY, h: toggle}
-  - {t: FN, h: toggle}
+  - {t: s, h: toggle}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   - {type: held}
-  - $$mdi:mouse-left-click-outline$$
-  FN:
+  - {t: '$$mdi:transfer$$', type: trans}
+  s:
   - {t: '`', s: '~'}
   - F1
   - F2
@@ -175,7 +175,7 @@ layers:
   - {t: '[', s: '{'}
   - {t: ']', s: '}'}
   - F12
-  - {t: '$$mdi:transfer$$', type: trans}
+  - $$mdi:progress-download$$
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '$$mdi:minus-circle-outline$$', type: none}
   - {t: '$$mdi:transfer$$', type: trans}
@@ -293,3 +293,8 @@ layers:
   - $$mdi:keyboard-space$$
   - $$mdi:apple-keyboard-option$$
   - {t: '$$mdi:keyboard-return$$', type: enter}
+combos:
+- p: [0, 42, 43, 44]
+  k: $$mdi:progress-download$$
+- p: [45, 46, 47, 12]
+  k: $$mdi:progress-download$$
