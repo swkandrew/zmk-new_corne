@@ -92,7 +92,7 @@ layers:
   - {t: ., s: '>'}
   - {t: '$$mdi:keyboard-return$$', type: enter}
   - {t: QWERTY, h: toggle}
-  - {t: QWERTY, h: toggle}
+  - {t: Symbol, h: toggle}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   - {type: held}
@@ -141,7 +141,7 @@ layers:
   - '}'
   - {t: '=', s: +}
   - {t: QWERTY, h: toggle}
-  - {t: QWERTY, h: toggle}
+  - {t: Fn, h: toggle}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
@@ -279,7 +279,7 @@ layers:
   - {t: C, h: '$$mdi:apple-keyboard-command$$'}
   - {t: V, h: '$$mdi:apple-keyboard-command$$'}
   - {t: '$$mdi:keyboard-return$$', type: enter}
-  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: QWERTY, h: toggle}
   - $$mdi:arrow-down-bold$$
   - {t: '0', s: )}
   - {t: '1', s: '!'}
