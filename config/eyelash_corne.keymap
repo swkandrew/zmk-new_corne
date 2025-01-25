@@ -111,6 +111,7 @@
             >;
 
             label = "Excali";
+            sensor-bindings = <&inc_dec_kp RIGHT LEFT>;
         };
 
         MacExcali {
@@ -122,6 +123,7 @@
             >;
 
             label = "MacExcali";
+            sensor-bindings = <&inc_dec_kp RIGHT LEFT>;
         };
     };
 };
