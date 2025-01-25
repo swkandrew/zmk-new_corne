@@ -83,7 +83,7 @@ layers:
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
-  - {t: NUMBER, h: toggle}
+  - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '0', s: )}
   - {t: '1', s: '!'}
@@ -91,7 +91,7 @@ layers:
   - {t: '3', s: '#'}
   - {t: ., s: '>'}
   - {t: '$$mdi:keyboard-return$$', type: enter}
-  - {t: NUMBER, h: toggle}
+  - {t: QWERTY, h: toggle}
   - {t: SYMBOL, h: toggle}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
@@ -132,7 +132,7 @@ layers:
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
-  - {t: NUMBER, h: toggle}
+  - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   - '*'
   - {t: /, s: '?'}
@@ -140,7 +140,7 @@ layers:
   - '{'
   - '}'
   - {t: '=', s: +}
-  - {t: NUMBER, h: toggle}
+  - {t: QWERTY, h: toggle}
   - {t: FN, h: toggle}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
@@ -189,8 +189,8 @@ layers:
   - '{'
   - '}'
   - {t: '=', s: +}
-  - {t: NUMBER, h: toggle}
-  - {t: NUMBER, h: toggle}
+  - {t: QWERTY, h: toggle}
+  - {t: QWERTY, h: toggle}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
@@ -279,7 +279,7 @@ layers:
   - {t: C, h: '$$mdi:apple-keyboard-command$$'}
   - {t: V, h: '$$mdi:apple-keyboard-command$$'}
   - {t: '$$mdi:keyboard-return$$', type: enter}
-  - {t: NUMBER, h: toggle}
+  - {t: QWERTY, h: toggle}
   - $$mdi:arrow-down-bold$$
   - {t: '0', s: )}
   - {t: '1', s: '!'}
