@@ -36,7 +36,7 @@
             bindings = <&kp>, <&kp>;
 
             #binding-cells = <2>;
-            tapping-term-ms = <250>;
+            tapping-term-ms = <150>;
         };
     };
 
@@ -60,10 +60,10 @@
         default_layer {
             display-name = "QWERTY";
             bindings = <
-&ta GRAVE ESCAPE  &kp Q  &kp W  &kp E             &kp R   &kp T                                   &kp UP                &kp Y                &kp U  &kp I      &kp O    &kp P     &kp BSPC
-&ta CAPS TAB      &kp A  &kp S  &kp D             &kp F   &kp G                         &kp LEFT  &kp ENTER  &kp RIGHT  &kp H                &kp J  &kp K      &kp L    &kp SEMI  &ta SQT ENTER
-&kp LSHIFT        &kp Z  &kp X  &kp C             &kp V   &kp B               &tog 4              &kp DOWN              &kp N                &kp M  &kp COMMA  &kp DOT  &kp FSLH  &kp RSHIFT
-                                &kp LEFT_CONTROL  &tog 1  &ta LEFT_ALT SPACE                                            &ta RIGHT_ALT SPACE  &mo 1  &kp ENTER
+&ta GRAVE ESCAPE  &kp Q  &kp W  &kp E             &kp R  &kp T                                   &kp UP                &kp Y                &kp U  &kp I      &kp O    &kp P     &kp BSPC
+&ta CAPS TAB      &kp A  &kp S  &kp D             &kp F  &kp G                         &kp LEFT  &kp ENTER  &kp RIGHT  &kp H                &kp J  &kp K      &kp L    &kp SEMI  &ta SQT ENTER
+&kp LSHIFT        &kp Z  &kp X  &kp C             &kp V  &kp B               &tog 4              &kp DOWN              &kp N                &kp M  &kp COMMA  &kp DOT  &kp FSLH  &kp RSHIFT
+                                &kp LEFT_CONTROL  &to 1  &ta LEFT_ALT SPACE                                            &ta RIGHT_ALT SPACE  &mo 1  &kp ENTER
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
@@ -74,7 +74,7 @@
 &trans      &kp N1        &kp N2        &kp N3        &kp N4  &kp N5                    &trans          &kp N6  &kp N7  &kp N8  &kp N9  &kp N0   &kp BSPC
 &bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &trans  &trans            &trans  &trans  &trans  &trans  &kp N4  &kp N5  &kp N6  &trans   &trans
 &trans      &trans        &trans        &trans        &trans  &trans  &trans            &trans          &kp N0  &kp N1  &kp N2  &kp N3  &kp DOT  &kp ENTER
-                                        &tog 0        &tog 0  &trans                                    &trans  &trans  &trans
+                                        &to 0         &to 2   &trans                                    &trans  &trans  &trans
             >;
 
             label = "number";
@@ -85,7 +85,7 @@
 &kp GRAVE  &kp EXCLAMATION  &kp AT_SIGN  &kp HASH  &kp DOLLAR  &kp PERCENT                    &trans          &kp CARET  &kp AMPERSAND  &kp ASTERISK  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp BACKSPACE
 &trans     &trans           &trans       &trans    &trans      &trans                 &trans  &trans  &trans  &kp PLUS   &kp MINUS      &kp BSLH      &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp UNDERSCORE
 &trans     &trans           &trans       &trans    &trans      &trans       &trans            &trans          &kp ASTRK  &kp SLASH      &kp TILDE     &kp LEFT_BRACE        &kp RIGHT_BRACE        &kp EQUAL
-                                         &tog 0    &tog 0      &trans                                         &trans     &trans         &trans
+                                         &to 0     &to 3       &trans                                         &trans     &trans         &trans
             >;
 
             label = "Symbol";
@@ -96,7 +96,7 @@
 &kp GRAVE  &kp F1  &kp F2  &kp F3  &kp F4  &kp F5                    &trans          &kp F6     &kp F7     &kp F8     &kp F9            &kp F10            &kp F11
 &trans     &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &kp PLUS   &kp MINUS  &kp BSLH   &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp F12
 &trans     &trans  &trans  &trans  &trans  &trans  &trans            &trans          &kp ASTRK  &kp SLASH  &kp TILDE  &kp LEFT_BRACE    &kp RIGHT_BRACE    &kp EQUAL
-                           &tog 0  &tog 0  &trans                                    &trans     &trans     &trans
+                           &to 0   &to 0   &trans                                    &trans     &trans     &trans
             >;
 
             label = "Fn";
@@ -116,10 +116,10 @@
 
         MacExcali {
             bindings = <
-&ta TAB C_EJECT  &ta LEFT_BRACKET LEFT_PARENTHESIS  &ta RIGHT_BRACKET RIGHT_PARENTHESIS  &ta LESS_THAN GREATER_THAN  &trans     &kp BACKSPACE                      &kp UP               &kp PLUS   &kp N7    &kp N8     &kp N9  &kp ASTRK  &kp BSPC
-&trans           &kp N1                             &kp N2                               &kp N5                      &kp N6     &trans                   &kp LEFT  &kp RET   &kp RIGHT  &kp MINUS  &kp N4    &kp N5     &kp N6  &kp FSLH   &trans
-&kp LSHFT        &kp LG(Z)                          &kp LG(X)                            &kp LG(C)                   &kp LG(V)  &kp ENTER      &trans              &kp DOWN             &kp N0     &kp N1    &kp N2     &kp N3  &kp DOT    &kp RET
-                                                                                         &kp LCTRL                   &kp LALT   &kp SPACE                                               &kp SPACE  &kp RALT  &kp ENTER
+&ta TAB C_EJECT  &ta LEFT_BRACKET LEFT_PARENTHESIS  &ta RIGHT_BRACKET RIGHT_PARENTHESIS  &ta LESS_THAN GREATER_THAN  &trans     &kp BACKSPACE                     &kp UP               &kp PLUS   &kp N7    &kp N8     &kp N9  &kp ASTRK  &kp BSPC
+&trans           &kp N1                             &kp N2                               &kp N5                      &kp N6     &trans                  &kp LEFT  &kp RET   &kp RIGHT  &kp MINUS  &kp N4    &kp N5     &kp N6  &kp FSLH   &trans
+&kp LSHFT        &kp LG(Z)                          &kp LG(X)                            &kp LG(C)                   &kp LG(V)  &kp ENTER      &to 0              &kp DOWN             &kp N0     &kp N1    &kp N2     &kp N3  &kp DOT    &kp RET
+                                                                                         &kp LCTRL                   &kp LALT   &kp SPACE                                              &kp SPACE  &kp RALT  &kp ENTER
             >;
 
             label = "MacExcali";
