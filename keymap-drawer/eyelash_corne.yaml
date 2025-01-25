@@ -293,3 +293,6 @@ layers:
   - $$mdi:keyboard-space$$
   - $$mdi:apple-keyboard-option$$
   - {t: '$$mdi:keyboard-return$$', type: enter}
+combos:
+- p: [41, 12]
+  k: $$mdi:backspace-reverse-outline$$
