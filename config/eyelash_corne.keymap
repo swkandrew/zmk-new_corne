@@ -110,8 +110,8 @@
             bindings = <
 &trans      &kp N1  &kp N2        &kp N3        &kp N4        &kp N5                          &trans          &kp N6  &kp N7  &kp N8  &kp N9  &kp N0   &kp BSPC
 &bt BT_CLR  &trans  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3            &trans  &trans  &trans  &trans  &kp N4  &kp N5  &kp N6  &trans   &trans
-&trans      &trans  &trans        &trans        &trans        &trans        &tog 1            &trans          &kp N0  &kp N1  &kp N2  &kp N3  &kp DOT  &kp ENTER
-                                  &tog 1        &tog 2        &trans                                          &trans  &trans  &trans
+&trans      &trans  &trans        &trans        &trans        &trans        &trans            &trans          &kp N0  &kp N1  &kp N2  &kp N3  &kp DOT  &kp ENTER
+                                  &tog 0        &tog 2        &trans                                          &trans  &trans  &trans
             >;
 
             label = "NUMBER";
@@ -130,8 +130,8 @@
             bindings = <
 &kp GRAVE    &kp EXCL  &kp AT  &kp HASH  &kp DLLR  &kp PRCNT                    &trans          &kp CARET     &kp AMPS   &kp ASTRK  &kp LPAR          &kp RPAR           &kp BSPC
 &trans       &none     &trans  &trans    &trans    &trans               &trans  &trans  &trans  &kp PLUS      &kp MINUS  &kp BSLH   &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp UNDERSCORE
-&bootloader  &none     &none   &trans    &trans    &trans     &tog 1            &trans          &kp ASTERISK  &kp SLASH  &kp TILDE  &kp LEFT_BRACE    &kp RIGHT_BRACE    &kp EQUAL
-                               &tog 1    &tog 3    &trans                                       &trans        &trans     &trans
+&bootloader  &none     &none   &trans    &trans    &trans     &trans            &trans          &kp ASTERISK  &kp SLASH  &kp TILDE  &kp LEFT_BRACE    &kp RIGHT_BRACE    &kp EQUAL
+                               &tog 0    &tog 3    &trans                                       &trans        &trans     &trans
             >;
 
             label = "SYMBOL";
@@ -145,7 +145,7 @@
 &kp GRAVE    &kp F1  &kp F2  &kp F3  &kp F4  &kp F5                    &trans          &kp F6        &kp F7     &kp F8     &kp F9            &kp F10            &kp F11
 &trans       &none   &trans  &trans  &trans  &trans            &trans  &trans  &trans  &kp PLUS      &kp MINUS  &kp BSLH   &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp F12
 &bootloader  &none   &none   &trans  &trans  &trans  &tog 4            &trans          &kp ASTERISK  &kp SLASH  &kp TILDE  &kp LEFT_BRACE    &kp RIGHT_BRACE    &kp EQUAL
-                             &tog 1  &tog 1  &trans                                    &trans        &trans     &trans
+                             &tog 0  &tog 0  &trans                                    &trans        &trans     &trans
             >;
 
             sensor-bindings = <&scroll_encoder>;
@@ -168,7 +168,7 @@
             bindings = <
 &Tap_Hold TAB C_EJECT  &Tap_Hold LEFT_BRACKET LEFT_PARENTHESIS  &Tap_Hold RIGHT_BRACKET RIGHT_PARENTHESIS  &Tap_Hold LESS_THAN GREATER_THAN  &arrow     &kp BSPC                       &kp UP               &kp ASTERISK  &kp N7    &kp N8   &kp N9  &kp PLUS   &kp BSPC
 &kp LSHFT              &kp N1                                   &kp N2                                     &kp N5                            &kp N6     &kp EQUAL            &kp LEFT  &kp RET   &kp RIGHT  &kp N5        &kp N4    &kp N5   &kp N6  &kp LCTRL  &kp LC(Z)
-&kp LCTRL              &kp LG(Z)                                &kp LG(X)                                  &kp LG(C)                         &kp LG(V)  &kp ENTER  &tog 1              &kp DOWN             &kp N0        &kp N1    &kp N2   &kp N3  &kp DOT    &kp ENTER
+&kp LCTRL              &kp LG(Z)                                &kp LG(X)                                  &kp LG(C)                         &kp LG(V)  &kp ENTER  &tog 0              &kp DOWN             &kp N0        &kp N1    &kp N2   &kp N3  &kp DOT    &kp ENTER
                                                                                                            &kp SPACE                         &kp LALT   &kp SPACE                                           &kp SPACE     &kp RALT  &kp RET
             >;
 
