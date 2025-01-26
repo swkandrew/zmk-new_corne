@@ -88,14 +88,7 @@
         tap-ms = <30>;
     };
 
-    combos {
-        compatible = "zmk,combos";
-
-        del {
-            bindings = <&kp DEL>;
-            key-positions = <41 12>;
-        };
-    };
+    combos { compatible = "zmk,combos"; };
 
     macros {
         wspace: wspace {
@@ -182,12 +175,5 @@
         };
     };
 
-    conditional_layers {
-        compatible = "zmk,conditional-layers";
-
-        exit {
-            if-layers = <0>;
-            then-layer = <1>;
-        };
-    };
+    conditional_layers { compatible = "zmk,conditional-layers"; };
 };
