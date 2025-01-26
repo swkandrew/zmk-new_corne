@@ -44,7 +44,7 @@ layers:
   - $$mdi:apple-keyboard-shift$$
   - '&conwin'
   - '&locklayer'
-  - $$mdi:keyboard-space$$
+  - '&wspacealt'
   - {t: '$$mdi:keyboard-space$$', h: '$$mdi:apple-keyboard-option$$'}
   - number
   - {t: '$$mdi:keyboard-return$$', type: enter}
