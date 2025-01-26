@@ -23,11 +23,13 @@
 
 / {
     behaviors {
-        td0: td0 {
+        td0: shift_cap {
             compatible = "zmk,behavior-tap-dance";
             display-name = "Shift/Caps Lock Tap Dance";
             #binding-cells = <0>;
             bindings = <&kp LEFT_SHIFT>, <&kp CAPS>;
+
+            label = "shift_cap";
         };
 
         ta: ta {
@@ -36,7 +38,23 @@
             bindings = <&kp>, <&kp>;
 
             #binding-cells = <2>;
-            tapping-term-ms = <150>;
+            tapping-term-ms = <250>;
+        };
+
+        conwin: conwin {
+            compatible = "zmk,behavior-tap-dance";
+            display-name = "Shift/Caps Lock Tap Dance";
+            #binding-cells = <0>;
+            bindings = <&kp LEFT_CONTROL>, <&kp LEFT_WIN>;
+
+            label = "CONWIN";
+        };
+
+        locklayer: locklayer {
+            compatible = "zmk,behavior-tap-dance";
+            label = "LOCKLAYER";
+            #binding-cells = <0>;
+            bindings = <&mo 1>, <&to 1>;
         };
     };
 
@@ -69,24 +87,25 @@
         default_layer {
             display-name = "QWERTY";
             bindings = <
-&ta GRAVE ESCAPE  &kp Q  &kp W  &kp E             &kp R  &kp T                                   &kp UP                &kp Y                &kp U  &kp I      &kp O    &kp P     &kp BACKSPACE
-&ta CAPS TAB      &kp A  &kp S  &kp D             &kp F  &kp G                         &kp LEFT  &kp ENTER  &kp RIGHT  &kp H                &kp J  &kp K      &kp L    &kp SEMI  &ta SQT ENTER
-&kp LSHIFT        &kp Z  &kp X  &kp C             &kp V  &kp B               &tog 4              &kp DOWN              &kp N                &kp M  &kp COMMA  &kp DOT  &kp FSLH  &kp RSHIFT
-                                &kp LEFT_CONTROL  &to 1  &ta LEFT_ALT SPACE                                            &ta RIGHT_ALT SPACE  &mo 1  &kp ENTER
+&kp ESCAPE  &kp Q  &kp W  &kp E    &kp R       &kp T                                  &kp UP                &kp Y                &kp U  &kp I      &kp O    &kp P     &kp BACKSPACE
+&kp TAB     &kp A  &kp S  &kp D    &kp F       &kp G                        &kp LEFT  &kp ENTER  &kp RIGHT  &kp H                &kp J  &kp K      &kp L    &kp SEMI  &ta SQT ENTER
+&kp LSHIFT  &kp Z  &kp X  &kp C    &kp V       &kp B               &to 4              &kp DOWN              &kp N                &kp M  &kp COMMA  &kp DOT  &kp FSLH  &kp RSHIFT
+                          &conwin  &locklayer  &ta LEFT_ALT SPACE                                           &ta RIGHT_ALT SPACE  &mo 1  &kp ENTER
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
+            sensor-bindings = <&inc_dec_kp RIGHT_ARROW LEFT>;
         };
 
         NUMBER {
             bindings = <
-&trans      &kp N1        &kp N2        &kp N3        &kp N4  &kp N5                    &trans          &kp N6  &kp N7  &kp N8  &kp N9  &kp N0   &kp BSPC
-&bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &trans  &trans            &trans  &trans  &trans  &trans  &kp N4  &kp N5  &kp N6  &trans   &trans
-&trans      &trans        &trans        &trans        &trans  &trans  &trans            &trans          &kp N0  &kp N1  &kp N2  &kp N3  &kp DOT  &kp ENTER
-                                        &to 0         &to 2   &trans                                    &trans  &trans  &trans
+&kp GRAVE  &kp N1  &kp N2  &kp N3  &kp N4        &kp N5                              &trans          &kp N6  &kp N7  &kp N8  &kp N9  &kp N0   &kp DELETE
+&kp CAPS   &trans  &trans  &trans  &trans        &trans                      &trans  &trans  &trans  &trans  &kp N4  &kp N5  &kp N6  &trans   &trans
+&trans     &trans  &trans  &trans  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_CLR            &trans          &kp N0  &kp N1  &kp N2  &kp N3  &kp DOT  &kp ENTER
+                           &to 0   &to 2         &trans                                              &trans  &trans  &trans
             >;
 
             label = "number";
+            sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
         };
 
         Symbol {
@@ -98,6 +117,7 @@
             >;
 
             label = "Symbol";
+            sensor-bindings = <&scroll_encoder>;
         };
 
         Fn {
@@ -109,6 +129,7 @@
             >;
 
             label = "Fn";
+            sensor-bindings = <&scroll_encoder>;
         };
 
         Excali {
